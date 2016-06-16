@@ -1,1 +1,0 @@
-../../../../../GQSecretImage/GQSecretImageModel.h
