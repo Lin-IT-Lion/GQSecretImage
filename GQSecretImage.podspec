@@ -11,5 +11,6 @@ Pod::Spec.new do |s|
   s.source_files     = 'GQSecretImage/**/*.{h,m}'
   s.license      = { :type => "MIT", :file => "LICENSE" }
   #s.resources = ''
-  #s.platform     = :ios, "7.0"
+  s.platform     = :ios, "7.0"
+  s.frameworks = 'AssetsLibrary'
 end

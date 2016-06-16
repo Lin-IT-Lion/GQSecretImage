@@ -240,7 +240,7 @@ static GQSecretImageHandler *sharedInstance;
         }
     } else {
         ALAuthorizationStatus author = [ALAssetsLibrary authorizationStatus];
-        if(author != ALAuthorizationStatusAuthorized && author != ALAuthorizationStatusNotDetermined) {
+        if (author != ALAuthorizationStatusAuthorized && author != ALAuthorizationStatusNotDetermined) {
             if (self.model.noAlbumAuthorizedBlock) {
                 self.model.noAlbumAuthorizedBlock();
             }
