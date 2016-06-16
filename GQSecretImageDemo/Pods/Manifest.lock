@@ -1,0 +1,14 @@
+PODS:
+  - GQSecretImage (0.0.1)
+
+DEPENDENCIES:
+  - GQSecretImage (from `../`)
+
+EXTERNAL SOURCES:
+  GQSecretImage:
+    :path: ../
+
+SPEC CHECKSUMS:
+  GQSecretImage: 4a637d4e8054a492ffa927a6388ea5f3d90be878
+
+COCOAPODS: 0.39.0
