@@ -12,6 +12,10 @@
 
 @property (nonatomic, copy) NSString *secretImageText;
 
+@property (nonatomic, copy) NSString *showInfoText;
+
+@property (nonatomic, copy) NSDictionary *showInfoTextAttrs;
+
 @property (nonatomic, copy) dispatch_block_t noAlbumAuthorizedBlock;
 
 @end

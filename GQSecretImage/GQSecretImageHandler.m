@@ -168,7 +168,15 @@ static GQSecretImageHandler *sharedInstance;
         {
             [window.layer renderInContext:context];
         }
+        
         CGContextRestoreGState(context);
+    }
+    
+    [self updateModel];
+    
+    if (self.model.showInfoText.length > 0) {
+        
+        [self.model.showInfoText drawInRect:CGRectMake(0, 22, imageSize.width, imageSize.height - 22) withAttributes:self.model.showInfoTextAttrs];
     }
     
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
@@ -179,8 +187,7 @@ static GQSecretImageHandler *sharedInstance;
 - (void)latestImage
 {
     typeof(self) __weak selfVc = self;
-    if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_8_4)
-    {
+    if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_8_4) {
         // 获取所有资源的集合，并按资源的创建时间排序
         PHFetchOptions *options = [[PHFetchOptions alloc] init];
         options.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO]];
@@ -217,9 +224,7 @@ static GQSecretImageHandler *sharedInstance;
 - (NSData *)transformSecretImageToData:(UIImage *)image
 {
     NSData *imageData = UIImageJPEGRepresentation(image, 1.0f);
-    if (self.setting) {
-        self.setting(self.model);
-    }
+    [self updateModel];
     NSData *stringData = [[NSString stringWithFormat:@"\n\n\n%@%@%@",GQSecretImageHandlerFlagString,self.model.secretImageText,GQSecretImageHandlerFlagString] dataUsingEncoding:NSUTF8StringEncoding];
     NSMutableData *data = [NSMutableData data];
     [data appendData:imageData];
@@ -303,6 +308,13 @@ static GQSecretImageHandler *sharedInstance;
                 }];
             }
         }];
+    }
+}
+
+- (void)updateModel
+{
+    if (self.setting) {
+        self.setting(self.model);
     }
 }
 

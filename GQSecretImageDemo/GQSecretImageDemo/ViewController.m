@@ -16,9 +16,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor redColor];
+    self.view.backgroundColor = [UIColor greenColor];
     [[GQSecretImageHandler sharedInstance] activeWtihSetting:^(GQSecretImageModel *model) {
         model.secretImageText = @"123456789";
+        model.showInfoText = [NSString stringWithFormat:@"时间:%@", [NSDate date]];
         model.noAlbumAuthorizedBlock = ^() {
             if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_8_0) {
                 UIAlertController *controller = [UIAlertController alertControllerWithTitle:nil message:@"请允许app访问相册" preferredStyle:UIAlertControllerStyleAlert];
